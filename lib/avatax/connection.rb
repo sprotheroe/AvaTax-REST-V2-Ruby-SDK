@@ -1,4 +1,4 @@
-require 'faraday_middleware'
+#require 'faraday_middleware'
 
 module AvaTax
 
@@ -28,7 +28,7 @@ module AvaTax
         end
         faraday.request :instrumentation
         faraday.response :json, content_type: /\bjson$/
-        faraday.request :basic_auth, username, password
+        faraday.request :authorization, :basic, username, password
 
         # TODO: use the following after upgrading to faraday 2.0
         #   see https://github.com/lostisland/faraday/blob/main/docs/middleware/request/authentication.md
